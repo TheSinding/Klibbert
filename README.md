@@ -3,7 +3,7 @@ A Simple screenshot uploader
 
 Depends on:
 + Scrot
-+ Pastey - github.com/TheSinding/pastey/
++ Pastey - https://github.com/TheSinding/pastey/
 + xdg-open
 
 ---
