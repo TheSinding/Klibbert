@@ -18,9 +18,12 @@ klibbert [OPTIONS]
 
 
 ##### Installation
-`git clone https://github.com/TheSinding/Klibbert`  
-`cd klibbert`    
-`chmod +x klibbert`  
-`sudo cp klibbert /usr/local/bin/`  
+```
+git clone https://github.com/TheSinding/Klibbert`  
+cd klibbert
+./install.sh
+```
+
+The install script will install pastey aswell, if you dont have it.
 
 #### That's it! :) 
