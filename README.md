@@ -22,7 +22,7 @@ klibbert [OPTIONS]
 
 ##### Installation
 ```
-git clone https://github.com/TheSinding/Klibbert`  
+git clone https://github.com/TheSinding/Klibbert
 cd klibbert
 ./install.sh
 ```
