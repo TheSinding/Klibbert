@@ -1,9 +1,12 @@
-# Klibbert
+# Klibbert v1.2
 A Simple screenshot uploader
 
 Depends on:
-+ Scrot
-+ Pastey - https://github.com/TheSinding/pastey/
++ ~~Scrot~~ Changed to maim
++ slop for region selection support
++ curl
++ sed
++ hash
 + xdg-open
 
 ---
@@ -25,5 +28,22 @@ cd klibbert
 ```
 
 The install script will install pastey aswell, if you dont have it.
+#### TODO 
++ Add more sites 
++ Add config
++ Add support for more maim things
+
 
 #### That's it! :) 
+
+
+#### changelog
+v1.2
+
++ Changed from scrot to maim
++ Removed pastey, used curl inside the script instead
++ Beefed up the install script
++ It's faster now :)
+v1.0
+
++ Initial "release" (It's a script nothing fancy)
