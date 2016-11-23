@@ -1,35 +1,53 @@
-#!/bin/bash   
+#!/bin/bash
+# Klibbert v1.2
 # Written by Simon Sinding - 2016 Github.com/TheSinding/
 SCREENSHOT_DIR="$HOME/screenshots/"
 SCROT_FILE_OPTIONS="%Y-%m-%d_\$wx\$h_scrot.png"
-hash scrot 2>/dev/null ||
+FILENAME=""
+DEFAULT_FILENAME=$(date +%F-%T)
+DEFAULT_FILEFORMAT="png"
+DEFAULT_SERVICE="https://ptpb.pw/"
+
+hash maim 2>/dev/null ||
 {
-	echo >&2 "Error: Scrot is required but it's not installed.  Aborting.";
-	exit 1; 
+	echo >&2 "Error: Maim is required but it's not installed.  Aborting.";
+	exit 1;
 }
 
-hash pastey 2>/dev/null || 
-{ 
-	echo >&2 "Error: Pastey is required but it's not installed, see https://github.com/TheSinding/pastey/.  Aborting."; 
-	exit 1; 
+hash slop 2>/dev/null ||
+{
+	echo >&2 "Warning: For -r to work, slop is required but it's not installed.";
+	NO_R=true
 }
+
+
 if [ ! -d $SCREENSHOT_DIR ]; then
 	echo "Info: $HOME/screenshots/ does not exists, creating it!"
 	mkdir $SCREENSHOT_DIR
 fi
 HELP(){
 		echo "Written by Simon Sinding - 2016 - Github.com/TheSinding/"
+		echo "Klibbert v1.2"
 		echo "Usage: klibbert [OPTIONS]"
-		echo "	-h, 	Shows this help"
-		echo "	-f,		Fullscreen screenshot"
-		echo "	-r,		Region screenshot"
+		echo "	-h,           Shows this help"
+		echo "	-f,           Fullscreen screenshot"
+		echo "	-r,           Region screenshot"
 		exit 1
 }
+
 OPEN(){
-	if [ $1 ]; then 
+	if [ $1 ]; then
 		xdg-open $1
 	fi
 	exit 1
+}
+CREATE_FILENAME(){
+	FILENAME="$SCREENSHOT_DIR$DEFAULT_FILENAME.$DEFAULT_FILEFORMAT"
+}
+UPLOAD(){
+			RETURN=$(curl -F c=@- $DEFAULT_SERVICE < $1 2>&1)
+			URL=$(echo "$RETURN" | sed -n -e 's/^\(url: \)\(.*\)$/\2/p' 2>&1)
+			OPEN $URL
 }
 while getopts ":frh" opt; do
   case $opt in
@@ -37,12 +55,19 @@ while getopts ":frh" opt; do
 			HELP
     	;;
     f)
-			url=$(scrot $SCREENSHOT_DIR$SCROT_FILE_OPTIONS -e 'pastey -f $f' 2>&1)
-			OPEN $url	
+			CREATE_FILENAME
+			maim $FILENAME
+			UPLOAD $FILENAME
     	;;
 		r)
-			url=$(scrot -s $SCREENSHOT_DIR$SCROT_FILE_OPTIONS -e 'pastey -f $f' 2>&1)
-			OPEN $url	
+			if [ ! $NO_SLOP ]; then
+				CREATE_FILENAME
+				maim -s $FILENAME
+				UPLOAD $FILENAME
+			else
+				echo "-$OPTARG needs slop. You'll have to install it"
+  			exit 1
+			fi
 			;;
 		\?)
 			echo "Error: -$OPTARG is an invalid option"
@@ -50,6 +75,7 @@ while getopts ":frh" opt; do
 			;;
   esac
 done
+
 
 if (($# == 0)); then
   HELP
