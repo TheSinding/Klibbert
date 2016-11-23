@@ -45,6 +45,7 @@ v1.2
 + Removed pastey, used curl inside the script instead
 + Beefed up the install script
 + It's faster now :)
+
 v1.0
 
 + Initial "release" (It's a script nothing fancy)
