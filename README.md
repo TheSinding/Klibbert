@@ -15,7 +15,8 @@ This is just a personal script for uploading screenshots to https://ptpb.pw/
 You are welcome to use it.
 
 ##### Usage
-klibbert [OPTIONS]  
+klibbert [OPTIONS]
+-h Show help
 -f Take fullscreen screenshot  
 -r Take region screenshot, or a shot of a open window.
 
