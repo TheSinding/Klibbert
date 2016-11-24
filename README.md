@@ -16,8 +16,11 @@ You are welcome to use it.
 
 ##### Usage
 klibbert [OPTIONS]
+
 -h Show help
--f Take fullscreen screenshot  
+
+-f Take fullscreen screenshot
+
 -r Take region screenshot, or a shot of a open window.
 
 
