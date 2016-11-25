@@ -2,8 +2,8 @@
 A Simple screenshot uploader
 
 Depends on:
-+ ~~Scrot~~ Changed to maim
-+ slop for region selection support
++ [Maim](https://github.com/naelstrof/maim)
++ [Slop](https://github.com/naelstrof/slop)
 + curl
 + sed
 + hash
