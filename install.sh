@@ -74,9 +74,7 @@ INSTALL_KLIBBERT(){
 
 hash cmake 2>/dev/null || {
 	echo "CMake is required!"
-	echo "Please install it, eg. apt-get cmake, pacman -Sy cmake, yum install cmake etc."
-	echo "Use your distribution's package manager"
-	echo "Aborting installation"
+	OS_INSTALL cmake
  }
 #
 hash maim 2>/dev/null || { NO_MAIM=true; }
