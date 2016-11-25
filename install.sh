@@ -49,7 +49,7 @@ INSTALL_SLOP_SOURCE(){
 	echo "Cloning Slop"
 	git clone https://github.com/naelstrof/slop.git /tmp/slop
 	cd /tmp/slop
-	echo "Installing Maim"
+	echo "Installing Slop"
 	cmake -DCMAKE_OPENGL_SUPPORT=true ./
 	make || { echo "Error: missing dependencies?";
    OS_INSTALL libxext imlib2 mesa libxrender libxrandr glew glm
