@@ -12,7 +12,7 @@ DIR=$(dirname $SOURCE)
 declare -A osInfo;
 osInfo[/etc/redhat-release]="yum -y install"
 osInfo[/etc/arch-release]="pacman -Sy"
-osInfo[/etc/debian_version]="apt-get install -y"
+osInfo[/etc/debian_version]="apt-get install "
 
 OS_INSTALL(){
   for f in ${!osInfo[@]}
@@ -34,12 +34,16 @@ OS_INSTALL(){
 
 
 INSTALL_MAIM_SOURCE(){
+	echo "Installing Maim from source"
+	echo "==========================="
+	echo "Installing dependencies"
+	OS_INSTALL libimlib2-dev libxrandr-dev libxfixes-dev
 	echo "Cloning Maim"
 	git clone https://github.com/naelstrof/maim.git /tmp/maim
 	cd /tmp/maim
-	echo "Installing Maim"
+	echo "Building Maim"
 	cmake ./
-	make || { echo "Error: missing dependencies?"; exit 1; }
+	make 
   make install
 	cd $KLIBBERT_DIR
   printf "\n\n\n";
@@ -52,7 +56,7 @@ INSTALL_SLOP_SOURCE(){
 	echo "Installing Slop"
 	cmake -DCMAKE_OPENGL_SUPPORT=true ./
 	make || { echo "Error: missing dependencies?";
-   OS_INSTALL libxext imlib2 mesa libxrender libxrandr glew glm
+   OS_INSTALL libxext-dev libimlib2-dev libxrender-dev libxrandr-dev libglew-dev libglm-dev
 	 make
  }
   make install
@@ -82,7 +86,7 @@ hash slop 2>/dev/null || { NO_SLOP=true; }
 #false
 # Maim install
 
-if ! $NO_MAIM; then
+if $NO_MAIM; then
 	echo "Maim is not installed, but it is required!"
 	echo "Maim is used as a screenshot engine"
 	echo "Do you wish to install Maim?"
