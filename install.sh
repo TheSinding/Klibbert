@@ -18,7 +18,16 @@ OS_INSTALL(){
   for f in ${!osInfo[@]}
   do
     if [[ -f $f ]];then
-      ${osInfo[$f]} $*
+		  	${osInfo[$f]} $* || {
+			 	if [ "$*" = "maim" ]; then 
+								echo "Maim installtion failed"; 
+								INSTALL_MAIM_SOURCE
+				fi 
+				if [ "$*" = "slop" ]; then
+								echo "slop installtion failed";
+								INSTALL_SLOP_SOURCE
+				fi
+		}
     fi
   done
 }
@@ -44,6 +53,7 @@ INSTALL_SLOP_SOURCE(){
 	cmake -DCMAKE_OPENGL_SUPPORT=true ./
 	make || { echo "Error: missing dependencies?";
    OS_INSTALL libxext imlib2 mesa libxrender libxrandr glew glm
+	 make
  }
   make install
 	cd $KLIBBERT_DIR
@@ -74,7 +84,7 @@ hash slop 2>/dev/null || { NO_SLOP=true; }
 #false
 # Maim install
 
-if $NO_MAIM; then
+if ! $NO_MAIM; then
 	echo "Maim is not installed, but it is required!"
 	echo "Maim is used as a screenshot engine"
 	echo "Do you wish to install Maim?"
