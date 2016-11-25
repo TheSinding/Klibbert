@@ -31,7 +31,6 @@ cd klibbert
 ./install.sh
 ```
 
-The install script will install pastey aswell, if you dont have it.
 #### TODO 
 + Add more sites 
 + Add config
