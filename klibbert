@@ -1,5 +1,5 @@
 #!/bin/bash
-# Klibbert v1.2
+# Klibbert v1.2.1
 # Written by Simon Sinding - 2016 Github.com/TheSinding/
 SCREENSHOT_DIR="$HOME/screenshots/"
 SCROT_FILE_OPTIONS="%Y-%m-%d_\$wx\$h_scrot.png"
@@ -7,6 +7,7 @@ FILENAME=""
 DEFAULT_FILENAME=$(date +%F-%T)
 DEFAULT_FILEFORMAT="png"
 DEFAULT_SERVICE="https://ptpb.pw/"
+TITLE="Klibbert"
 
 hash maim 2>/dev/null ||
 {
@@ -25,9 +26,16 @@ if [ ! -d $SCREENSHOT_DIR ]; then
 	echo "Info: $HOME/screenshots/ does not exists, creating it!"
 	mkdir $SCREENSHOT_DIR
 fi
+
+MESSAGE(){
+	echo $*
+	if [ -n `which notify-send` ]; then
+					notify-send "$TITLE" "$*"
+	fi
+}
 HELP(){
 		echo "Written by Simon Sinding - 2016 - Github.com/TheSinding/"
-		echo "Klibbert v1.2"
+		echo "Klibbert v1.2.1"
 		echo "Usage: klibbert [OPTIONS]"
 		echo "	-h,           Shows this help"
 		echo "	-f,           Fullscreen screenshot"
@@ -47,6 +55,7 @@ CREATE_FILENAME(){
 UPLOAD(){
 			RETURN=$(curl -F c=@- $DEFAULT_SERVICE < $1 2>&1)
 			URL=$(echo "$RETURN" | sed -n -e 's/^\(url: \)\(.*\)$/\2/p' 2>&1)
+			MESSAGE "Success: picture will open in default browser"
 			OPEN $URL
 }
 while getopts ":frh" opt; do
@@ -57,12 +66,14 @@ while getopts ":frh" opt; do
     f)
 			CREATE_FILENAME
 			maim $FILENAME
+			MESSAGE "Uploading screenshot!"
 			UPLOAD $FILENAME
     	;;
 		r)
 			if [ ! $NO_SLOP ]; then
 				CREATE_FILENAME
 				maim -s $FILENAME
+				MESSAGE "Uploading screenshot!"
 				UPLOAD $FILENAME
 			else
 				echo "-$OPTARG needs slop. You'll have to install it"
