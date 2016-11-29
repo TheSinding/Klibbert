@@ -1,5 +1,5 @@
 #!/bin/bash
-# Klibbert v1.2
+# Klibbert v1.2.1
 # Written by Simon Sinding - 2016 Github.com/TheSinding/
 SCREENSHOT_DIR="$HOME/screenshots/"
 SCROT_FILE_OPTIONS="%Y-%m-%d_\$wx\$h_scrot.png"
@@ -35,7 +35,7 @@ MESSAGE(){
 }
 HELP(){
 		echo "Written by Simon Sinding - 2016 - Github.com/TheSinding/"
-		echo "Klibbert v1.2"
+		echo "Klibbert v1.2.1"
 		echo "Usage: klibbert [OPTIONS]"
 		echo "	-h,           Shows this help"
 		echo "	-f,           Fullscreen screenshot"
