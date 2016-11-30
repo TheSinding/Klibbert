@@ -43,7 +43,7 @@ cd klibbert
 ---
 
 
-### changelog
+### Changelog
 
 
 v1.2.1
