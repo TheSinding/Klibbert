@@ -31,18 +31,20 @@ cd klibbert
 ./install.sh
 ```
 
+#### That's it! :) 
+
+
 #### TODO 
 + Add more sites 
 + Add config
 + Add support for more maim things
 
 
-#### That's it! :) 
+---
 
 
 ### changelog
 
----
 
 v1.2.1
 
