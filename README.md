@@ -1,4 +1,4 @@
-# Klibbert v1.2
+# Klibbert v1.2.1
 A Simple screenshot uploader
 
 Depends on:
@@ -41,6 +41,10 @@ cd klibbert
 
 
 #### changelog
+v1.2.1
+
++ Added notifications! YAY!
+
 v1.2
 
 + Changed from scrot to maim
