@@ -40,7 +40,10 @@ cd klibbert
 #### That's it! :) 
 
 
-#### changelog
+### changelog
+
+---
+
 v1.2.1
 
 + Added notifications! YAY!
