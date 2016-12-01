@@ -1,0 +1,15 @@
+{
+  "name": "Klibbert",
+  "version": "2.0.0",
+  "description": "A screenshot upload utility",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/TheSinding/Klibbert",
+  "author": "Simon Sinding",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}

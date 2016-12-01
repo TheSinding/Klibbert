@@ -1,7 +1,7 @@
-# Klibbert v1.2.1
-A Simple screenshot uploader
+# Klibbert v2.0 alpha
+A screenshot uploader
 
-Depends on:
+Depends on: **WILL CHANGE**
 + [Maim](https://github.com/naelstrof/maim)
 + [Slop](https://github.com/naelstrof/slop)
 + curl
@@ -15,14 +15,7 @@ This is just a personal script for uploading screenshots to https://ptpb.pw/
 You are welcome to use it.
 
 ##### Usage
-klibbert [OPTIONS]
-
--h Show help
-
--f Take fullscreen screenshot
-
--r Take region screenshot, or a shot of a open window.
-
+Hrm nothing yet? 
 
 ##### Installation
 ```
@@ -31,11 +24,11 @@ cd klibbert
 ./install.sh
 ```
 
-#### That's it! :) 
+#### That's it! :)
 
 
-#### TODO 
-+ Add more sites 
+#### TODO
++ Add more sites
 + Add config
 + Add support for more maim things
 
