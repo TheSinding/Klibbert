@@ -1,7 +1,7 @@
-# Klibbert v1.2.1
+# Klibbert v1.2.2
 A Simple screenshot uploader
 
-Depends on:
+##### Depends on:
 + [Maim](https://github.com/naelstrof/maim)
 + [Slop](https://github.com/naelstrof/slop)
 + curl
@@ -20,6 +20,8 @@ klibbert [OPTIONS]
 -h Show help
 
 -f Take fullscreen screenshot
+
+-s [filepath] Upload a local picture (Technically this should work with textfiles as well)
 
 -r Take region screenshot, or a shot of a open window.
 
@@ -45,6 +47,8 @@ cd klibbert
 
 ### Changelog
 
+v1.2.2
++ Added -s argument for fileupload
 
 v1.2.1
 
